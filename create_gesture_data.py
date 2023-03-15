@@ -2,6 +2,9 @@ import cv2
 import numpy as np
 import os
 
+folder = input("Enter folder name: ")
+item = input("Enter item name: ")
+
 background = None
 accumulated_weight = 0.5
 
@@ -108,7 +111,7 @@ while True:
             cv2.imshow("Thresholded Hand Image", thresholded)
             if num_imgs_taken <= 10:
                 #cv2.imwrite(r"D:\\gesture\\train\\"+str(element)+"\\" + str(num_imgs_taken+300) + '.jpg', thresholded)
-                cv2.imwrite(os.getcwd() + "\\gesture\\test\\5" +"\\" + str(num_imgs_taken) + '.jpg', thresholded)
+                cv2.imwrite(f"{os.getcwd()} + \\gesture\\{folder}\\{item}" +"\\" + str(num_imgs_taken) + '.jpg', thresholded)
             else:
                 break
             num_imgs_taken +=1
