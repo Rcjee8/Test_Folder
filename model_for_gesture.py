@@ -9,6 +9,8 @@ model = keras.models.load_model("best_model_dataflair3.h5")
 background = None
 accumulated_weight = 0.5
 
+d = {0:"A",1:"B",2:"C",3:"D",4:"E"}
+
 ROI_top = 100
 ROI_bottom = 300
 ROI_right = 150
@@ -92,7 +94,7 @@ while True:
             thresholded = np.reshape(thresholded, (1,thresholded.shape[0],thresholded.shape[1],3))
             
             pred = model.predict(thresholded)
-            cv2.putText(frame_copy, str(np.argmax(pred)), (170, 45), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
+            cv2.putText(frame_copy, d[np.argmax(pred)], (170, 45), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
             
     # Draw ROI on frame_copy
     cv2.rectangle(frame_copy, (ROI_left, ROI_top), (ROI_right, ROI_bottom), (255,128,0), 3)
